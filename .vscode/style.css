@@ -58,7 +58,7 @@ body * {
   /*na borda, usamos 3 propriedades -> tamanho, tipo de borda e cor
   border: 1px solid red;
   */
-  width: 100%;
+  height: 100vh;
   max-width: 588px;
   /* vai colocar borda em cima e embaixo, usando só lateral e embaixo, porém o css por padrao não coloca margem em cima, o margin auto deixda alinhado ao meio */
   /*elementos inline não dá para usar margin auto */
@@ -126,12 +126,21 @@ body * {
   z-index: 1;
   /*estamos dizendo para o transform, usando seu eixo Y vertical e posicionando -50% de onde está*/
   transform: translateY(-50%);
+
+  animation: slide-back .2s;
+}
+
+.light body {
+  background-image: url(./assets/bg-desktop-light.jpg);
 }
 
 .light #switch button {
-  right: 0;
-  /*left que volta a sua maneira inicial*/
-  left: initial;
+  /*forwards significa voltar ao inicio depois de fazer a animação*/
+  animation: slide-in 0.4s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -235,4 +244,30 @@ footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+}
+
+@media (min-width: 700px) {
+  body {
+    background-image: url(./assets/bg-desktop.jpg);
+  }
+
+  .light body {
+    background-image: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/*animação*/
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left:50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: ;
+  }
 }
