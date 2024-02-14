@@ -58,7 +58,8 @@ body * {
   /*na borda, usamos 3 propriedades -> tamanho, tipo de borda e cor
   border: 1px solid red;
   */
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   /* vai colocar borda em cima e embaixo, usando só lateral e embaixo, porém o css por padrao não coloca margem em cima, o margin auto deixda alinhado ao meio */
   /*elementos inline não dá para usar margin auto */
   margin: auto;
