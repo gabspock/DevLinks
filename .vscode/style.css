@@ -1,17 +1,10 @@
-/*margin auto é uma forma de centralizar elementos usando CSS */
-
 * {
-  /*estamos dizendo ao css para resetar as margens e espaçamento interno que vem padrao dos navegadores */
   margin: 0;
   padding: 0;
-  /* usamos quando colocamos padding no containes, a medida vem da propria borda, mantem os #container -> width:360px e qualquer preenchimento interno ele vai se virar para tentar colocar #container -> padding: 100px 
-  box-sizing: border-box;*/
 }
 
 :root {
-  /*todo texto que receber essa variavel, ficará branco*/
   --text-color: white;
-  /*fazendo variavel para mudar o bg*/
   --bg-url: url(./assets/bg-mobile.jpg);
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
@@ -31,82 +24,41 @@
 }
 
 body {
-  /* background-image: url(./assets/bg-mobile.jpg); /*
-  background-repeat: no-repeat;
-  /*com o position top, estamos dizendo para reposicionar o eixo y
-  para que começar no top - centro com o centro y vs centro x */
-  /* background-position: top center; /*
-  /*o bg cover vai cobrir todo o espaço em branco visivel, deixando apenas a imagem do bg disponivel
-  background-size: contain SEM numeros de tamanho e largura, vai comprimir o bg bem pequeno, pois não há nenhum setting nele*/
-  /* background-size: cover; 
-/*
-
-  /*
-  background-image: url(./assets/bg-mobile.jpg) no-repeat top center/cover -> é a maneira de fazer por short hand/atalho para outras propriedades; vamos usá-lo neste projeto
-  */
-
   background: var(--bg-url) no-repeat top center/cover;
 }
 
-/* body * é o valor universal, vai apkicar TODOS os elementos do body*/
 body * {
   font-family: "Inter", sans-serif;
   color: var(--text-color);
 }
 
 #container {
-  /*na borda, usamos 3 propriedades -> tamanho, tipo de borda e cor
-  border: 1px solid red;
-  */
   height: 100vh;
   max-width: 588px;
-  /* vai colocar borda em cima e embaixo, usando só lateral e embaixo, porém o css por padrao não coloca margem em cima, o margin auto deixda alinhado ao meio */
-  /*elementos inline não dá para usar margin auto */
   margin: auto;
-  /* por padrao já vem o display block ou inline. display block pega toda a largura disponivel, forçando qualquer outro elemento dele forçando a ficar embaixo dele, não ficando mais inline*/
-
-  /*podemos usar o padding-top: 56px ou margin para dar o espaçamento de cima, mas aqui vamos usar o margin */
   margin: 56px auto 0px;
   padding: 0 2px;
 }
 
-/*profile */
 #profile {
-  /*todos elementos pai (#profile) vai definir que fique centralizado, right ou left */
   text-align: center;
-  /* vai adicionar o preenchimento interno de 24px para todos os lados da caixa */
   padding: 24px;
 }
 
 #profile img {
-  /*display: inline-´block diz para mantermos o inline, mas deixe usar algumas propriedade em block
-  display: block;
-  */
-
-  /* altura não precisa definir, segue o conteudo da imagem da caixa, altura tem que ser fluida */
   width: 112px;
-  /* vai sumir com o elemento da tela ocultando o elemento da pagina
-  display: none;
-  */
-  /* para usarmos a margin auto, precisamos transformar o elemento em display block 
-  margin: auto; */
 }
 
 #profile p {
   font-weight: 400;
-  /*por padrao os navegadores usam font-size 16px
-  font-size: 16px; */
-  /*line-height é altura da linha */
   line-height: 24px;
   margin-top: 8px;
 }
 
 /*switch*/
 #switch {
-  /*aqui o position vai relativizar o position:absolute dentro de #switch button */
   position: relative;
   width: 64px;
-  /*auto vai automatizar as margens laterais */
   margin: 4px auto;
 }
 
@@ -116,17 +68,11 @@ body * {
   background: white var(--switch-bg-url) no-repeat center;
   border: 0;
   border-radius: 50%;
-  /*começamos a aprender a manipular elementos do tipo position
-  imediatamente faz uma sobreposição de camadas liberando propriedades novas como z-index*/
   position: absolute;
-  /*aqui usamos para subir de andar, subir a camada*/
-  /*no top, dizemos para subir 50% de onde o translateY o colocou*/
   top: 50%;
   left: 0;
   z-index: 1;
-  /*estamos dizendo para o transform, usando seu eixo Y vertical e posicionando -50% de onde está*/
   transform: translateY(-50%);
-
   animation: slide-back .2s;
 }
 
@@ -135,7 +81,6 @@ body * {
 }
 
 .light #switch button {
-  /*forwards significa voltar ao inicio depois de fazer a animação*/
   animation: slide-in 0.4s forwards;
 }
 
@@ -144,7 +89,6 @@ body * {
 }
 
 #switch span {
-  /*span é um elemento inline, então usamos display:lock */
   display: block;
   width: 64px;
   height: 24px;
@@ -156,56 +100,25 @@ body * {
 
 /* links */
 ul {
-  /*estamos tirando os pontinhos dos topicos */
   list-style: none;
-  /*display flex vai trabalhar com os elementos dentro da caixa, vai fazer com que os elementos dentro da caixa fiquem um ao lado do outro, de uma maneira flexivel, tentando se encaixar */
   display: flex;
-  /*por padrão, flex-direction é row, então para mudar o padrão, usamos o column para blocar um abaixo do outro*/
   flex-direction: column;
-  /*gap vai pegar os espaços entre as elementos e colocar um afastamento com a medida que queremos*/
   gap: 16px;
-
   padding: 24px 0;
 }
 
-/*vai pegar os topicos dentro dos links*/
-/*li é um display: block, por isso vai usar o dado de #container -> width: 360px; */
-
-/*o a é um display:line, por isso vai pegar só o tamanho do elemento
 ul li a {
-  /*quando adicionamos o elemento display: flex ou elemento display: block também, o a vai ocupar 100%
-  display: flex;
-  border: 1px solid red;
-}*/
-
-ul li a {
-  /*vai fazer sentido usar display:flex pois vai fazer com o a ocupe todos os espaços*/
-  /*se fosse display:block, por ser texto ali dentro do display, poderiamos usar text-align: center também para centralizar, também é uma maneira certa para centralizar os elementos
-  display: flex;
-  text-align: center; */
-
-  /* o display:flex cria uma linha virtual abaixo do elemento chamado de main no eixo x */
   display: flex;
   align-items: center;
-  /*justify-content: center é uma linha virtual no eixo y centralizando os conteudos*/
   justify-content: center;
-
   padding: 16px 24px;
-
-  /*rgba -> red, green, blue e alpha, alpha é a transparencia*/
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
   border-radius: 8px;
-
-  /*embaça levemente o elemento*/
   backdrop-filter: blur(4px);
-  /*significa que estamos falando para alguns navegadores carregarem sem problema, com este prefixo */
   -webkit-backdrop-filter: blur(4px);
-
-  /*tirando a linha do hiperlink*/
   text-decoration: none;
   font-weight: 500;
-
   transition: background 0.2s;
 }
 
@@ -214,16 +127,12 @@ ul li a:hover {
   background: var(--surface-color-hover);
   border: 1.5px solid var(--text-color);
 }
+
 /* social links */
 #social-links {
   display: flex;
-  /*podemos alinhar o elemento ao meio por conta do display:flex */
   justify-content: center;
-  /*aplicamos display:flex para habilitar a função gap
-  gap: 32px;*/
-
   padding: 24px 0;
-  /*aqui no font-size estamos mudando todo o tamanho dos elementos dentro de #social-links */
   font-size: 24px;
 }
 
@@ -246,6 +155,7 @@ footer {
   font-size: 14px;
 }
 
+/*manipulação do bg*/
 @media (min-width: 700px) {
   body {
     background-image: url(./assets/bg-desktop.jpg);
@@ -262,12 +172,15 @@ footer {
     left: 0;
   }
   to {
-    left:50%;
+    left: 50%;
   }
 }
 
 @keyframes slide-back {
   from {
-    left: ;
+    left: 50% ;
+  }
+  to {
+    left: 0;
   }
 }
